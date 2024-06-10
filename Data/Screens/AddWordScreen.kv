@@ -1,0 +1,41 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/DictTextInput.kv
+#:include Data/Screens/UIElements/MeaningContent.kv
+
+<AddWordScreen@CustomScreen>:
+    inputWord: inputWord
+    inputTranscription: inputTranscription
+    inputTranslation: inputTranslation
+    meaningContent: meaningContent
+    screenLayout: screenLayout
+    ScreenLayout:
+        id: screenLayout
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1, 0.9
+            padding: 5
+            spacing: 5
+            DictTextInput:
+                id: inputWord
+                hint_text: app.text.AddWord
+                on_text_validate: inputTranscription.focus = True
+                on_text: root.TextUpdated()
+                on_focus: root.TextUpdated()
+            DictTextInput:
+                id: inputTranscription
+                hint_text: app.text.AddTranscription
+                on_text_validate: inputTranslation.focus = True
+                on_text: root.TranscriptionUpdated()
+            DictTextInput:
+                id: inputTranslation
+                size_hint: 1, None
+                height: 100
+                multiline: True
+                hint_text: app.text.AddMeaning
+                on_text: root.TranslationUpdated()
+            BoxLayout:
+                orientation: "vertical"
+                MeaningContent:
+                    id: meaningContent

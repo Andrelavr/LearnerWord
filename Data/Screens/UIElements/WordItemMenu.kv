@@ -1,0 +1,72 @@
+#:kivy 2.3.0
+
+<TrainingWordMenu@Bubble>:
+    size_hint: None, None
+    word: ""
+    BubbleContent:
+        orientation: "vertical"
+        BubbleButton:
+            text: app.text.WordDetail
+            on_release:
+                app.GetScreenManager().get_screen("WordDetail").SetWord(root.word)
+                app.GoToScreen("WordDetail", "left")
+        BubbleButton:
+            text: app.text.WordEdit
+            on_release:
+                app.GetScreenManager().get_screen("AddWordScreen").SetWord(root.word)
+                app.GoToScreen("AddWordScreen", "left")
+        BubbleButton:
+            text: app.text.WordsToLearned
+            on_release: app.GetScreenManager().get_screen("WordListScreen").MoveWordToLearned(root.word)
+        BubbleButton
+            text: app.text.WordsToIgnore
+            on_release: app.GetScreenManager().get_screen("WordListScreen").MoveWordToIgnore(root.word)
+        BubbleButton:
+            text: app.text.WordsRemove
+            on_release: app.GetScreenManager().get_screen("WordListScreen").Remove(root.word)
+
+
+<LearnedWordMenu@Bubble>:
+    size_hint: None, None
+    word: ""
+    BubbleContent:
+        orientation: "vertical"
+        BubbleButton:
+            text: app.text.WordDetail
+            on_release:
+                app.GetScreenManager().get_screen("WordDetail").SetWord(root.word)
+                app.GoToScreen("WordDetail", "left")
+        BubbleButton:
+            text: app.text.WordEdit
+            on_release:
+                app.GetScreenManager().get_screen("AddWordScreen").SetWord(root.word)
+                app.GoToScreen("AddWordScreen", "left")
+        BubbleButton
+            text: app.text.WordsToIgnore
+            on_release: app.GetScreenManager().get_screen("WordListScreen").MoveWordToIgnore(root.word)
+        BubbleButton:
+            text: app.text.WordsRemove
+            on_release: app.GetScreenManager().get_screen("WordListScreen").Remove(root.word)
+
+
+<IgnoreWordMenu@Bubble>:
+    size_hint: None, None
+    word: ""
+    BubbleContent:
+        orientation: "vertical"
+        BubbleButton:
+            text: app.text.WordDetail
+            on_release:
+                app.GetScreenManager().get_screen("WordDetail").SetWord(root.word)
+                app.GoToScreen("WordDetail", "left")
+        BubbleButton:
+            text: app.text.WordEdit
+            on_release:
+                app.GetScreenManager().get_screen("AddWordScreen").SetWord(root.word)
+                app.GoToScreen("AddWordScreen", "left")
+        BubbleButton:
+            text: app.text.WordsToTraining
+            on_release: app.GetScreenManager().get_screen("WordListScreen").MoveWordToTraining(root.word)
+        BubbleButton:
+            text: app.text.WordsRemove
+            on_release: app.GetScreenManager().get_screen("WordListScreen").Remove(root.word)

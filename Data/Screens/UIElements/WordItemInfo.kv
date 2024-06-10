@@ -1,0 +1,16 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+
+<WordItemInfo@Bubble>:
+    size_hint: 1, None
+    BubbleContent:
+        orientation: "vertical"
+        UnicodeLabel:
+            id: word
+            font_size: 22
+        UnicodeLabel:
+            id: transcription
+            font_size: 22
+        UnicodeLabel:
+            id: translation
+            font_size: 22

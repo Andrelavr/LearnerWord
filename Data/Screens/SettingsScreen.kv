@@ -1,0 +1,34 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/SettingItems.kv
+
+<SettingsScreen@CustomScreen>:
+    translateTo: translateTo
+    translateFrom: translateFrom
+    appLanguage: appLanguage
+    appTheme: appTheme
+    translatorSwitch: translatorSwitch
+    princetonSwitch: princetonSwitch
+    ScreenLayout:
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            GridLayout:
+                cols: 1
+                size_hint: 1, None
+                height: sum(item.height for item in self.children)
+                padding: 5
+                spacing: 0
+                SettingsItemSpinner:
+                    id: translateTo
+                SettingsItemSpinner:
+                    id: translateFrom
+                SettingsItemSpinner:
+                    id: appLanguage
+                SettingsItemSpinner:
+                    id: appTheme
+                SettingsItemSwitch:
+                    id: translatorSwitch
+                SettingsItemSwitch:
+                    id: princetonSwitch

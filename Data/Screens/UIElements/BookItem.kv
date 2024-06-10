@@ -1,0 +1,55 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/FlatButton.kv
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+
+<BookLine@UnicodeLabel>:
+    font_size: 18
+    max_lines: 1
+    valign: 'top'
+    halign: 'justify'
+    text_size: self.size
+    markup: True
+    text_size: self.width, None
+    color: app.color.BookFont
+    on_ref_press: app.GetScreenManager().get_screen("BookReaderScreen").WordPressed(args[0], args[1])
+
+<BookTitleButton@FlatButton>:
+    halign: "left"
+    font_size: 18
+    padding: 10, 5, 10, 5
+
+<BookButton@FlatButton>:
+    halign: "justify"
+    valign: "top"
+    text_size: self.width, None
+    max_lines: 2
+    padding: 10, 5, 10, 5
+    font_size: 18
+    height: 50
+    defaultButtonColor: app.color.TextlineBackground
+    pressedButtonColor: app.color.TextlineBackground
+    background_normal: ''
+    background_down: ''
+    color: app.color.Font
+
+<BookItem@BoxLayout>:
+    orientation: "horizontal"
+    title: ""
+    author: ""
+    readState: ""
+    background: app.color.TextlineBackground
+    BookButton:
+        size_hint: 1, 1
+        text: root.title
+        on_release:
+            app.GetScreenManager().get_screen("BookListScreen").OpenBookReader(root.title)
+    BookButton:
+        size_hint: 1, 1
+        text: root.author
+        on_release:
+            app.GetScreenManager().get_screen("BookListScreen").OpenBookReader(root.title)
+    BookButton:
+        size_hint: 0.2, 1
+        text: root.readState
+        on_release:
+            app.GetScreenManager().get_screen("BookListScreen").OpenBookReader(root.title)

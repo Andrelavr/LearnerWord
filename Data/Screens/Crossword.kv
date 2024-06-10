@@ -1,0 +1,60 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/FlatButton.kv
+#:include Data/Screens/UIElements/CrosswordTipsItem.kv
+#:include Data/Screens/UIElements/AccordionFlatButton.kv
+
+<Crossword@CustomScreen>:
+    screenLayout: screenLayout
+    mainField: mainField
+    crosswordAccordionItem: crosswordAccordionItem
+    tipsScreenCheckButton: tipsScreenCheckButton
+    ScreenLayout:
+        id: screenLayout
+        headerButtonFunc: root.CheckPressed
+        headerButtonText: app.text.CrosswordCheck
+        Accordion:
+            size_hint: 1.0, 0.9
+            AccordionFlatButton:
+                id: crosswordAccordionItem
+                title:  app.text.Crossword
+                collapse: False
+                AnchorLayout:
+                    size_hint: 1, 1
+                    anchor_x: "center"
+                    anchor_y: "center"
+                    BoxLayout:
+                        id: mainField
+                        padding: 5
+                        size_hint: None, 1
+                        width: self.height
+                        orientation: "vertical"
+                        spacing: 1
+            AccordionFlatButton:
+                title: app.text.CrosswordTips
+                collapse: True
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 1
+                    padding: 5, 0, 5, 5
+                    BoxLayout:
+                        orientation: "vertical"
+                        spacing: 5
+                        RecycleView:
+                            data: root.data
+                            viewclass: 'CrosswordTipsItem'
+                            size_hint: 1, 0.8
+                            RecycleBoxLayout:
+                                orientation: 'vertical'
+                                size_hint: 1, 1
+                                height: self.minimum_height
+                                default_size_hint: 1, None
+                                default_size: 0, dp(40)
+                                size_hint_y: None
+                                spacing: dp(1)
+                        FlatButton:
+                            id: tipsScreenCheckButton
+                            size_hint: 1, 0.1
+                            text: app.text.CrosswordCheck
+                            on_release: root.CheckPressed()

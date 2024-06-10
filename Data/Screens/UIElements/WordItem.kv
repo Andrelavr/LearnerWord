@@ -1,0 +1,49 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/WordItemInfo.kv
+#:include Data/Screens/UIElements/WordItemMenu.kv
+
+<WordButton@Button>:
+    halign: "right"
+    valign: "center"
+    text_size: self.width, self.height
+    padding: 10
+    background_color: app.color.TextlineBackground
+    background_normal: ''
+    background_down: ''
+    color: app.color.Font
+
+<WordItem@BoxLayout>:
+    orientation: "horizontal"
+    text: ""
+    games: ""
+    correct: ""
+    wrong: ""
+    series: ""
+    more: "..."
+    background: app.color.TextlineBackground
+
+    WordButton:
+        size_hint: 1, 1
+        text: root.text
+        halign: "left"
+        on_release: app.GetScreenManager().get_screen("WordListScreen").ButtonWordPressed(root.text, root, self)
+    WordButton:
+        size_hint: 0.1, 1
+        text: root.games
+        on_release: app.GetScreenManager().get_screen("WordListScreen").ButtonGamesPressed()
+    WordButton:
+        size_hint: 0.1, 1
+        text: root.correct
+        on_release: app.GetScreenManager().get_screen("WordListScreen").ButtonCorrectPressed()
+    WordButton:
+        size_hint: 0.1, 1
+        text: root.wrong
+        on_release: app.GetScreenManager().get_screen("WordListScreen").ButtonWrongPressed()
+    WordButton:
+        size_hint: 0.1, 1
+        text: root.series
+        on_release: app.GetScreenManager().get_screen("WordListScreen").ButtonSeriesPressed()
+    WordButton:
+        size_hint: 0.1, 1
+        text: root.more
+        on_release: app.GetScreenManager().get_screen("WordListScreen").ButtonMorePressed(root.text, root, self)

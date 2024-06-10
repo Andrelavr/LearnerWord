@@ -1,0 +1,36 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/InfoLine.kv
+#:include Data/Screens/UIElements/FlatButton.kv
+
+<InfoScreen@CustomScreen>:
+    mainLayout: mainLayout
+    ScreenLayout:
+        id: mainLayout
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: 75
+            padding: 5
+            spacing: 5
+            FlatButton:
+                text: app.text.WordsNew
+                on_release:
+                    app.GetScreenManager().get_screen("WordListScreen").SetLevelNewWords()
+                    app.GoToScreen("WordListScreen", "left")
+            FlatButton:
+                text: app.text.WordsTraining
+                on_release:
+                    app.GetScreenManager().get_screen("WordListScreen").SetLevelInTraining()
+                    app.GoToScreen("WordListScreen", "left")
+            FlatButton:
+                text: app.text.WordsLearned
+                on_release:
+                    app.GetScreenManager().get_screen("WordListScreen").SetLevelLearned()
+                    app.GoToScreen("WordListScreen", "left")
+            FlatButton:
+                text: app.text.WordsIgnore
+                on_release:
+                    app.GetScreenManager().get_screen("WordListScreen").SetLevelIgnore()
+                    app.GoToScreen("WordListScreen", "left")

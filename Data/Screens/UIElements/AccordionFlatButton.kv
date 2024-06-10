@@ -1,0 +1,31 @@
+#:kivy 2.3.0
+
+<AccordionFlatButton@AccordionItem>:
+    background_normal: ''
+    background_selected : ''
+    defaultColor: app.color.FlatButton
+    pressedColor: app.color.FlatButtonPressed
+    title_template: 'AccordionFlatButtonTitle'
+
+[AccordionFlatButtonTitle@Label]:
+    text: ctx.title
+    color: app.color.Font
+    canvas.before:
+        Color:
+            rgb: 
+                ctx.item.defaultColor \
+                if ctx.item.collapse \
+                else ctx.item.pressedColor
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        PushMatrix
+        Translate:
+            xy: self.center_x, self.center_y
+        Rotate:
+            angle: 90 if ctx.item.orientation == 'horizontal' else 0
+            axis: 0, 0, 1
+        Translate:
+            xy: -self.center_x, -self.center_y
+    canvas.after:
+        PopMatrix

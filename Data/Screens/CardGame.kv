@@ -1,0 +1,50 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+#:include Data/Screens/UIElements/GameButton.kv
+
+<CardGame@CustomScreen>:
+    screenLayout: screenLayout
+    translationText: translationText
+    card1: card1
+    card2: card2
+    card3: card3
+    card4: card4
+    ScreenLayout:
+        id: screenLayout
+        headerButtonFunc: root.DetailPressed
+        headerButtonText: app.text.WordDetail
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.9
+            padding: 5
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, 0.25
+                UnicodeLabel:
+                    id: translationText
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, 0.75
+                spacing: 5
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 5
+                    GameButton:
+                        id: card1
+                        on_release: root.CheckCard(card1)
+                    GameButton:
+                        id: card2
+                        on_release: root.CheckCard(card2)
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 5
+                    GameButton:
+                        id: card3
+                        on_release: root.CheckCard(card3)
+                    GameButton:
+                        id: card4
+                        on_release: root.CheckCard(card4)
+
+<TranslationCardGame@CardGame>:

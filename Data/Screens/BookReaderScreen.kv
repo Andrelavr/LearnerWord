@@ -1,0 +1,90 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/BookItem.kv
+
+<BookReaderScreen@CustomScreen>:
+    bookPage: bookPage
+    pageLabel: pageLabel
+    leftPageButton: leftPageButton
+    rightPageButton: rightPageButton
+    screenLayout: screenLayout
+    testcolor: app.color.Font
+    ScreenLayout:
+        id: screenLayout
+        headerButtonText: app.text.WordDetail
+        AnchorLayout:
+            canvas.before:
+                Color:
+                    rgb: app.color.BookReaderBackground
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            anchor_x: "center"
+            anchor_y: "center"
+            size_hint: 1, 0.9
+            padding: 5
+            BoxLayout:
+                id: bookPage
+                orientation: "vertical"
+                size_hint: None, 1
+                width: 800
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+                BookLine:
+    FloatLayout:
+        BoxLayout:
+            pos: 0, root.height - self.height - 30
+            orientation: "horizontal"
+            size_hint: 1, None
+            height: 40
+            background: app.color.TextlineBackground
+            padding: 1
+            BoxLayout:
+                size_hint: 1, 1
+            BookTitleButton:
+                id: leftPageButton
+                size_hint: None, 1
+                width: 60
+                halign: 'center'
+                text: "<"
+                on_release: root.LeftPage()
+            Label:
+                id: pageLabel
+                size_hint: None, 1
+                width: 100
+            BookTitleButton:
+                id: rightPageButton
+                size_hint: None, 1
+                width: 60
+                halign: 'center'
+                text: ">"
+                on_release: root.RightPage()
+            BoxLayout:
+                size_hint: 1, 1

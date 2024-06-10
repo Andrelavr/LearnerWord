@@ -1,0 +1,41 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/BookItem.kv
+
+<BookListScreen@CustomScreen>:
+    recycleView: recycleView
+    ScreenLayout:
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1, 0.9
+            padding: 5
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, 0.05
+                background: app.color.TextlineBackground
+                padding: 1
+                BookTitleButton:
+                    size_hint: 1, 1
+                    text: app.text.BooksTitle
+                    on_release: root.SortByTitle()
+                BookTitleButton:
+                    size_hint: 1, 1
+                    text: app.text.BooksAuthor
+                    on_release: root.SortByAuthor()
+                BookTitleButton:
+                    size_hint: 0.2, 1
+                    text: ""
+                    on_release: root.SortByReadingState()
+            RecycleView:
+                id: recycleView
+                data: root.data
+                viewclass: 'BookItem'
+                RecycleBoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    default_size_hint: 1, None
+                    default_size: 0, dp(40)
+                    size_hint_y: None
+                    spacing: dp(1)

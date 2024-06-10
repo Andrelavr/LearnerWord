@@ -1,0 +1,63 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/MeaningContent.kv
+#:include Data/Screens/UIElements/FlatButton.kv
+
+<WordDetail@CustomScreen>:
+    screenLayout: screenLayout
+    currentWordButton: currentWordButton
+    meaningContent: meaningContent
+    wordNumber: wordNumber
+    ScreenLayout:
+        id: screenLayout
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1, 0.9
+            padding: 5
+            spacing: 5
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, 0.1
+                FlatButton:
+                    id: currentWordButton
+                    pressedButtonColor: app.color.Transparent
+                    defaultButtonColor: app.color.Transparent
+                    text_size: self.width, self.height
+                    on_release: root.CurrentWordPressed()
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, 1
+                MeaningContent:
+                    id: meaningContent
+    FloatLayout:
+        BoxLayout:
+            pos: 0, root.height - self.height - 30
+            orientation: "horizontal"
+            size_hint: 1, None
+            height: 40
+            background: app.color.TextlineBackground
+            padding: 1
+            BoxLayout:
+                size_hint: 1, 1
+            FlatButton:
+                size_hint: None, 1
+                width: 60
+                halign: 'center'
+                font_size: 18
+                text: "<"
+                on_release: root.PrevWord()
+            Label:
+                id: wordNumber
+                size_hint: None, 1
+                padding: 5
+                width: self.texture_size[0]
+            FlatButton:
+                size_hint: None, 1
+                width: 60
+                halign: 'center'
+                font_size: 18
+                text: ">"
+                on_release: root.NextWord()
+            BoxLayout:
+                size_hint: 1, 1

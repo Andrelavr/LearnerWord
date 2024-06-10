@@ -1,0 +1,102 @@
+#:kivy 2.3.0
+#:include Data/Screens/WordPuzzleGame.kv
+#:include Data/Screens/InfoScreen.kv
+#:include Data/Screens/WordListScreen.kv
+#:include Data/Screens/CardGame.kv
+#:include Data/Screens/Crossword.kv
+#:include Data/Screens/FindMatchGame.kv
+#:include Data/Screens/WordDetailScreen.kv
+#:include Data/Screens/BookListScreen.kv
+#:include Data/Screens/BookReaderScreen.kv
+#:include Data/Screens/AddWordScreen.kv
+#:include Data/Screens/SettingsScreen.kv
+#:include Data/Screens/UIElements/FlatButton.kv
+#:include Data/Screens/UIElements/CustomScreen.kv
+
+<MainScreen>:
+    id: screenManager
+    screenMgr: screenManager
+    CustomScreen:
+        name: "MainMenuScreen"
+        BoxLayout:
+            orientation: "horizontal"
+            padding: 5
+            spacing: 5
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, 1
+                spacing: 5
+                FlatButton:
+                    text: app.text.MainButtonBooks
+                    on_release:
+                        app.GoToScreen("BookListScreen", "left")
+                FlatButton:
+                    text: app.text.MainButtonFindAMatch
+                    on_release:
+                        app.GoToScreen("FindMatchGame", "left")
+                FlatButton:
+                    text: app.text.MainButtonWords
+                    on_release: 
+                        app.GoToScreen("InfoScreen", "left")
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 2, 1
+                spacing: 5
+                FlatButton:
+                    text: app.text.MainButtonAddWord
+                    on_release:
+                        app.GoToScreen("AddWordScreen", "left")
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, 4
+                    spacing: 5
+                    BoxLayout:
+                        orientation: "vertical"
+                        spacing: 5
+                        FlatButton:
+                            text: app.text.MainButtonWordPuzzle
+                            on_release:
+                                app.GoToScreen("WordPuzzleScreen", "left")
+                        FlatButton:
+                            text: app.text.MainButtonCard
+                            on_release:
+                                app.GoToScreen("CardGame", "left")
+                    BoxLayout:
+                        orientation: "vertical"
+                        spacing: 5
+                        FlatButton:
+                            text: app.text.MainButtonCrossword
+                            on_release:
+                                app.GoToScreen("Crossword", "left")
+                        FlatButton:
+                            text: app.text.MainButtonTrCard
+                            on_release:
+                                app.GoToScreen("TranslationCardGame", "left")
+                FlatButton:
+                    text: app.text.MainButtonSettings
+                    on_release: 
+                        app.GoToScreen("SettingsScreen", "left")
+    WordPuzzleGame:
+        name: "WordPuzzleScreen"
+    InfoScreen:
+        name: "InfoScreen"
+    WordListScreen:
+        name: "WordListScreen"
+    CardGame:
+        name: "CardGame"
+    TranslationCardGame:
+        name: "TranslationCardGame"
+    FindMatchGame:
+        name: "FindMatchGame"
+    Crossword:
+        name: "Crossword"
+    WordDetail:
+        name: "WordDetail"
+    BookListScreen:
+        name: "BookListScreen"
+    BookReaderScreen:
+        name: "BookReaderScreen"
+    AddWordScreen:
+        name: "AddWordScreen"
+    SettingsScreen:
+        name: "SettingsScreen"

@@ -1,0 +1,17 @@
+#:kivy 2.3.0
+
+<CharacterButton@BoxLayout>:
+    size_hint: 0.1, 1
+    button: characterButton
+    defaulColor: app.color.FlatButton
+    correctColor: app.color.ButtonCorrect
+    wrongColor: app.color.ButtonWrong
+    Button:
+        id: characterButton
+        background_color: app.color.FlatButton
+        background_normal: ''
+        background_down: ''
+        font_size: 32
+        color: app.color.Font
+        on_release:
+            root.ReleaseButton()

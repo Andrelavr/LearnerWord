@@ -1,0 +1,34 @@
+#:kivy 2.3.0
+
+<FlatSwitch@Switch>:
+    leftLabel: "ON"
+    rightLabel: "OFF"
+    canvas:
+        Color:
+            rgb: app.color.SwitchBackgroundOn
+        Rectangle:
+            size: sp(41.5), sp(23)
+            pos: self.center_x - sp(41.5), self.center_y - sp(11.5)
+        Color:
+            rgb: app.color.SwitchBackgroundOff
+        Rectangle:
+            size: sp(41.5), sp(23)
+            pos: self.center_x, self.center_y - sp(11.5)
+    canvas.after:
+        Color:
+            rgb: app.color.SwitchSlider
+        Rectangle:
+            size: sp(44.0), sp(28)
+            pos: self.active_norm_pos * sp(42.0) + self.center_x - sp(42.0), self.center_y - sp(14)
+    Label:
+        text: "[b]{}[/b]".format(root.leftLabel)
+        color: app.color.SwitchTextOn
+        markup: True
+        font_size: 16
+        pos: root.center_x - sp(62), root.center_y - sp(40)
+    Label:
+        text: "[b]{}[/b]".format(root.rightLabel)
+        color: app.color.SwitchTextOff
+        markup: True
+        font_size: 16
+        pos: root.center_x - sp(18), root.center_y - sp(40)

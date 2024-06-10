@@ -1,0 +1,25 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+
+<InfoLine@BoxLayout>:
+    orientation: 'horizontal'
+    size_hint: 1, 0.1
+    padding: 15
+    leftLabel: leftLabel
+    rightLabel: rightLabel
+    BoxLayout:
+        id: leftLayout
+        UnicodeLabel:
+            id: leftLabel
+            halign: 'left'
+            valign: 'center'
+            text_size: leftLayout.width, leftLayout.height
+            font_size: 24
+    BoxLayout:
+        id: rightLayout
+        UnicodeLabel:
+            id: rightLabel
+            halign: 'right'
+            valign: 'center'
+            text_size: rightLayout.width, rightLayout.height
+            font_size: 24

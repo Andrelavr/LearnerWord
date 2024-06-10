@@ -1,0 +1,55 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+
+<MeaningWordItem@BoxLayout>:
+    itemLabel: itemLabel
+    prevHeight: 0
+    indentDefault: 5, 5, 5, 5
+    indentMain: 50, 5, 5, 5
+    indentAddition: 100, 5, 5, 5
+    orientation: "horizontal"
+    size_hint: 1, None
+    height: itemLabel.height
+    canvas.before:
+        Color:
+            rgb: app.color.Separator
+        Rectangle:
+            pos: self.pos
+            size: self.width, 1
+    UnicodeLabel:
+        padding: root.indentDefault
+        id: itemLabel
+        size_hint: 1, None
+        font_size: 18
+        height: self.texture_size[1]
+        text_size: self.width, None
+        halign: 'justify'
+        markup: True
+
+<MeaningWordMarkItem@MeaningWordItem>:
+    markLabel: markLabel
+    FloatLayout:
+        BoxLayout:
+            pos: root.pos
+            orientation: "horizontal"
+            size_hint: None, None
+            width: 100
+            height: root.height
+            padding: 0
+            UnicodeLabel:
+                id: markLabel
+                size_hint: 1, 1
+                font_size: 32
+                text_size: self.width, self.height
+
+<MeaningContent@ScrollView>:
+    scrollContent: scrollContent
+    do_scroll_y: True
+    do_scroll_x: False
+    GridLayout:
+        id: scrollContent
+        cols: 1
+        size_hint: 1, None
+        height: 1500
+        padding: 5
+        spacing: 0

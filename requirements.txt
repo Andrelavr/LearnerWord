@@ -1,0 +1,5 @@
+Kivy==2.3.0
+beautifulsoup4==4.12.3
+gTTS==2.5.1
+eng_to_ipa==0.0.2
+Requests==2.31.0

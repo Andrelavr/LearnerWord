@@ -1,0 +1,15 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/FlatButton.kv
+
+<CrosswordTipsItem@BoxLayout>:
+    orientation: 'horizontal'
+    word: ''
+    text: ''
+    FlatButton:
+        text: root.text
+        font_size: 18
+        halign: 'justify'
+        valign: 'top'
+        padding: 20, 5, 20, 5
+        text_size: self.width, self.height
+        on_release: app.GetScreenManager().get_screen("Crossword").Select(root.word)

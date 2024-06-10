@@ -1,0 +1,41 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/FlatButton.kv
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+
+<GameButton@FlatButton>:
+    correctColor: app.color.ButtonCorrect
+    wrongColor: app.color.ButtonWrong
+    activeColor: app.color.ButtonActive
+    selectedActiveColor: app.color.ButtonSelectedActive
+    defaultButtonColor: app.color.FlatButton
+    pressedButtonColor: app.color.FlatButtonPressed
+    background_color: self.defaultButtonColor
+    background_disabled_normal: ""
+    background_disabled_down: ""
+    text_size: self.width, self.height
+    font_name: UnicodeFontName
+    color: app.color.Font
+    disabled_color: app.color.Font
+
+<GridItem@GameButton>:
+    gridMark: gridMark
+    correctColor: app.color.CrosswordButtonCorrect
+    wrongColor: app.color.CrosswordButtonWrong
+    activeColor: app.color.CrosswordButtonActive
+    selectedActiveColor: app.color.CrosswordButtonSelectedActive
+    defaultButtonColor: app.color.CrosswordBackground
+    pressedButtonColor: app.color.CrosswordBackground
+    color: app.color.CrosswordFont
+    disabled_color: app.color.CrosswordFont
+    size_hint: None, 1
+    width: self.height
+    Label:
+        id: gridMark
+        pos: root.pos
+        size: root.size
+        text_size: self.size
+        halign: "right"
+        valign: "top"
+        padding: 0,3,4,0
+        font_size: 10
+        color: app.color.FlatButtonPressed

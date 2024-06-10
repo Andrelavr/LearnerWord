@@ -1,0 +1,68 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/FlatButton.kv
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+#:include Data/Screens/UIElements/FlatSwitch.kv
+#:import Factory kivy.factory.Factory
+
+<SpinnerButton@FlatButton>:
+    size_hint: 1, None
+    height: 50
+    size_text: self.size
+
+<SettingsSpinner@Spinner>:
+    defaultButtonColor: app.color.FlatButton
+    pressedButtonColor: app.color.FlatButtonPressed
+    background_color: self.defaultButtonColor
+    background_normal: ''
+    background_down: ''
+    font_size: 32
+    color: app.color.Font
+    valign: 'center'
+    halign: 'center'
+    padding: 5, 5, 5, 5
+    font_name: UnicodeFontName
+    option_cls: Factory.get("SpinnerButton")
+
+<SettingsItemSpinner@BoxLayout>:
+    settingLabel: ""
+    spinnerValues: []
+    settingChangedFunc: None
+    settingSpinnerText: ""
+    settingDisabled: False
+    orientation: "horizontal"
+    size_hint: 1, None
+    height: 100
+    padding: 5
+    UnicodeLabel:
+        text: root.settingLabel
+        text_size: self.size
+        halign: 'left'
+        valign: 'center'
+        padding: 5
+    AnchorLayout:
+        anchor_x: "right"
+        padding: 5, 15, 5, 15
+        SettingsSpinner:
+            disabled: root.settingDisabled
+            values: root.spinnerValues
+            text: root.settingSpinnerText
+            on_text: if root.settingChangedFunc: root.settingChangedFunc(self.text)
+
+<SettingsItemSwitch@BoxLayout>:
+    settingLabel: ""
+    switchActive: True
+    settingChangedFunc: None
+    orientation: "horizontal"
+    size_hint: 1, None
+    height: 100
+    padding: 5
+    UnicodeLabel:
+        text: root.settingLabel
+        text_size: self.size
+        halign: 'left'
+        valign: 'center'
+        padding: 5
+    BoxLayout:
+        FlatSwitch:
+            active: root.switchActive
+            on_active: if root.settingChangedFunc: root.settingChangedFunc(self.active)

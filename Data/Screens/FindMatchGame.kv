@@ -1,0 +1,15 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/CustomScreen.kv
+#:include Data/Screens/UIElements/ScreenLayout.kv
+#:include Data/Screens/UIElements/GameButton.kv
+#:include Data/Screens/UIElements/FindMatchPairButton.kv
+
+<FindMatchGame@CustomScreen>:
+    gameLayout: gameLayout
+    ScreenLayout:
+        BoxLayout:
+            id: gameLayout
+            orientation: 'vertical'
+            size_hint: 1, 0.9
+            padding: 5
+            spacing: 5

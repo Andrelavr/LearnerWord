@@ -1,0 +1,42 @@
+#:kivy 2.3.0
+#:include Data/Screens/UIElements/UnicodeLabel.kv
+#:include Data/Screens/UIElements/FlatButton.kv
+
+<ScreenLayout@StackLayout>:
+    headerLabelText: ""
+    headerButtonText: ""
+    headerButtonFunc: None
+    BoxLayout:
+        size_hint: 1.0, None
+        height: 75
+        orientation: 'horizontal'
+        padding: 5
+        canvas.before:
+            Color:
+                rgb: app.color.HeaderBackground
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        FlatButton:
+            size_hint: None, 1.0
+            width: self.texture_size[0]
+            padding: 10, 5, 10, 5
+            text: app.text.MainBack
+            on_release:
+                app.PopScreen()
+        UnicodeLabel:
+            halign: 'right'
+            valign: 'center'
+            text_size: self.width, self.height
+            font_size: 18
+            padding: 20, 0, 20, 0
+            text: root.headerLabelText
+        FlatButton:
+            disabled: False if root.headerButtonFunc else True
+            opacity: 1 if root.headerButtonFunc else 0
+            size_hint: None, 1.0
+            width: self.texture_size[0]
+            padding: 10, 5, 10, 5
+            text: root.headerButtonText
+            on_release:
+                if root.headerButtonFunc: root.headerButtonFunc()
