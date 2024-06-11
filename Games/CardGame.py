@@ -68,7 +68,7 @@ class CardGame(BaseGame):
         return word
 
     def FinishGame(self):
-        self.FinishGame()
+        super().FinishGame()
         Dictionary().SetResultGame(self._cardWord, self.IsGameFailed(), time.time())
         for card in self._cards:
             if not self.IsCorrectCard(card):
